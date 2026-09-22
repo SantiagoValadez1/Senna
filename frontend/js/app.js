@@ -4,6 +4,20 @@ const GRANDES_PREMIOS_2024 = [
 
 let analisisActual = null;
 
+function mostrarError(mensaje) {
+  const contenedor = document.querySelector(".dashboard");
+  let banner = document.getElementById("bannerError");
+  if (!banner) {
+    banner = document.createElement("div");
+    banner.id = "bannerError";
+    banner.className = "banner-error";
+    contenedor.prepend(banner);
+  }
+  banner.textContent = mensaje;
+  banner.classList.remove("oculto");
+  setTimeout(() => banner.classList.add("oculto"), 6000);
+}
+
 async function inicializar() {
   poblarSelector("selectGranPremio", GRANDES_PREMIOS_2024.map((gp) => ({ valor: gp.ronda, texto: gp.nombre })));
   await cargarPilotos();
@@ -39,7 +53,7 @@ async function analizarTelemetria() {
     analisisActual = await obtenerAnalisisStint(anio, ronda, piloto);
     renderizarGraficaDegradacion(analisisActual);
   } catch (error) {
-    alert(`Error al analizar telemetría: ${error.message}`);
+    mostrarError(`Error al analizar telemetría: ${error.message}`);
   } finally {
     cargaGrafica.classList.add("oculto");
   }
@@ -52,7 +66,7 @@ function encontrarStintDeVuelta(vueltaActual) {
 
 async function consultarEstrategiaUI() {
   if (!analisisActual) {
-    alert("Primero analiza la telemetría de una vuelta.");
+    mostrarError("Primero analiza la telemetría de una vuelta.");
     return;
   }
 
@@ -63,7 +77,7 @@ async function consultarEstrategiaUI() {
 
   const stintActual = encontrarStintDeVuelta(vueltaActual);
   if (!stintActual) {
-    alert("Esa vuelta no cae dentro de ningún stint analizado.");
+    mostrarError("Esa vuelta no cae dentro de ningún stint analizado.");
     return;
   }
 
@@ -84,7 +98,7 @@ async function consultarEstrategiaUI() {
     });
     mostrarRecomendacion(recomendacion);
   } catch (error) {
-    alert(`Error al consultar estrategia: ${error.message}`);
+    mostrarError(`Error al consultar estrategia: ${error.message}`);
   } finally {
     cargaEstrategia.classList.add("oculto");
   }

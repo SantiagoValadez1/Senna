@@ -2,6 +2,7 @@ import fastf1
 import numpy as np
 import pandas as pd
 from pathlib import Path
+from functools import lru_cache
 
 from app.config import settings
 
@@ -44,6 +45,7 @@ def _limpiarVueltas(vueltas: pd.DataFrame) -> pd.DataFrame:
     return limpias.dropna(subset=["tiempoVueltaSegundos"])
 
 
+@lru_cache(maxsize=32)
 def analizarStint(anio: int, numeroRonda: int, abreviaturaPiloto: str) -> dict:
     sesion = _cargarSesion(anio, numeroRonda)
     vueltasPiloto = sesion.laps.pick_drivers(abreviaturaPiloto)

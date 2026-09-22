@@ -37,6 +37,17 @@ body {
   padding: 1.5rem;
 }
 
+.banner-error {
+  grid-column: 1 / -1;
+  background: #3a0e12;
+  border: 1px solid #e30512;
+  color: #ffb3b8;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  transition: opacity 0.3s ease;
+}
+
 .panel {
   background: var(--panel);
   border: 1px solid var(--borde);

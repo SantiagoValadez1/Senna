@@ -22,6 +22,10 @@ function renderizarGraficaDegradacion(analisis) {
     data: { datasets },
     options: {
       responsive: true,
+      animation: {
+        duration: 800,
+        easing: "easeOutQuart",
+      },
       scales: {
         x: { type: "linear", title: { display: true, text: "Vuelta" }, ticks: { color: "#e6e6e6" } },
         y: { title: { display: true, text: "Tiempo de vuelta (s)" }, ticks: { color: "#e6e6e6" } },
