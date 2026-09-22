@@ -1,0 +1,109 @@
+:root {
+  --fondo: #0a0e14;
+  --panel: #12181f;
+  --borde: #2a3441;
+  --texto: #e6e6e6;
+  --acento: #00d4ff;
+  --fuente-mono: "Consolas", "Courier New", monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: var(--fuente-mono);
+}
+
+.pit-wall-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 2px solid var(--acento);
+}
+
+.pit-wall-header h1 {
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.pit-wall-header span {
+  color: var(--acento);
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 280px 1fr 320px;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  color: var(--acento);
+  letter-spacing: 1px;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+}
+
+select, input, button {
+  width: 100%;
+  margin-top: 0.25rem;
+  padding: 0.5rem;
+  background: var(--fondo);
+  color: var(--texto);
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: var(--acento);
+  color: #001018;
+  font-weight: bold;
+  border: none;
+}
+
+button:hover { opacity: 0.85; }
+
+.indicador-carga {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--acento);
+}
+
+.oculto { display: none; }
+
+.recomendacion {
+  margin-top: 1rem;
+  border-top: 1px solid var(--borde);
+  padding-top: 1rem;
+}
+
+.badge-compuesto {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #000;
+}
+
+.justificacion {
+  font-size: 0.8rem;
+  opacity: 0.85;
+  line-height: 1.4;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SENNA — Pit Wall</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="pit-wall-header">
+    <h1>SENNA <span>Pit Wall</span></h1>
+  </header>
+
+  <main class="dashboard">
+    <section class="panel selectores">
+      <h2>Selección de sesión</h2>
+      <label>
+        Año
+        <select id="selectAnio">
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+        </select>
+      </label>
+      <label>
+        Gran Premio
+        <select id="selectGranPremio"></select>
+      </label>
+      <label>
+        Piloto
+        <select id="selectPiloto"></select>
+      </label>
+      <button id="btnAnalizar">Analizar telemetría</button>
+    </section>
+
+    <section class="panel grafica">
+      <h2>Degradación de neumáticos</h2>
+      <canvas id="graficaDegradacion"></canvas>
+      <div id="cargaGrafica" class="indicador-carga oculto">Cargando telemetría...</div>
+    </section>
+
+    <section class="panel radio-boxes">
+      <h2>Radio de boxes</h2>
+      <label>
+        Vuelta actual
+        <input type="number" id="inputVueltaActual" min="1" value="45" />
+      </label>
+      <button id="btnConsultarEstrategia">Consultar al ingeniero</button>
+      <div id="cargaEstrategia" class="indicador-carga oculto">Consultando al estratega...</div>
+      <div id="recomendacion" class="recomendacion oculto">
+        <div class="badge-compuesto" id="badgeCompuesto"></div>
+        <p><strong>Ventana de parada:</strong> <span id="ventanaParada"></span></p>
+        <p><strong>Estrategia:</strong> <span id="tipoEstrategia"></span></p>
+        <p><strong>Riesgo de tráfico:</strong> <span id="riesgoTrafico"></span></p>
+        <p class="justificacion" id="justificacionTecnica"></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/vendor/chart.umd.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
